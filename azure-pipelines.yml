@@ -30,14 +30,15 @@ steps:
     sonarQubeRunAnalysis: false
 - task: DownloadSecureFile@1
   inputs:
-    secureFile: 'appcenter-sampleapp.keystore'
+    secureFile: a97b5381-5b44-4ef8-a11f-bd8651e05df4
 - task: AndroidSigning@3
   inputs:
     apkFiles: '$(Build.SourcesDirectory)/app/build/outputs/apk/release/*.apk'
-    apksignerKeystoreFile: 'appcenter-sampleapp.keystore'
-    apksignerKeystorePassword: '$(keystore-password)'
-    apksignerKeystoreAlias: '$(android-alias)'
-    apksignerKeyPassword: '$(android-key-password)'
+    apksignerKeystoreFile: a97b5381-5b44-4ef8-a11f-bd8651e05df4
+    apksignerKeystorePassword: '$PelvmteN1985'
+    apksignerKeystoreAlias: 'key0'
+    apksignerKeyPassword: '$PelvmteN1985'
+    zipalign: false
 - task: AppCenterTest@1
   inputs:
     appFile: '$(Build.SourcesDirectory)/app/build/outputs/apk/debug/*.apk'
@@ -45,15 +46,15 @@ steps:
     frameworkOption: 'espresso'
     espressoBuildDirectory: '$(Build.SourcesDirectory)/app/build/outputs/apk/androidTest/debug'
     credentialsOption: 'serviceEndpoint'
-    serverEndpoint: 'App Center Token'
-    appSlug: 'XTCTeam/appcenter-sampleapp-android'
-    devices: 'ef7113b6'
+    serverEndpoint: 47f65014-8ec6-451b-a10b-9f99ed9c18ad
+    appSlug: 'giselat/SampleApp-Android'
+    devices: 'giselat/our-staff-phones'
     localeOption: 'en_US'
 
 - task: AppCenterDistribute@3
   inputs:
-    serverEndpoint: 'App Center Token'
-    appSlug: 'XTCTeam/appcenter-sampleapp-android'
+    serverEndpoint: 47f65014-8ec6-451b-a10b-9f99ed9c18ad
+    appSlug: 'giselat/SampleApp-Android'
     appFile: '$(Build.SourcesDirectory)/app/build/outputs/apk/release/*.apk'
     symbolsOption: 'Android'
     symbolsMappingTxtFile: '$(Build.SourcesDirectory)/app/build/outputs/mapping/release/mapping.txt'
