@@ -38,6 +38,7 @@ steps:
     apksignerKeystorePassword: '$PelvmteN1985'
     apksignerKeystoreAlias: 'key0'
     apksignerKeyPassword: '$PelvmteN1985'
+    zipalign: false
 - task: AppCenterTest@1
   inputs:
     appFile: '$(Build.SourcesDirectory)/app/build/outputs/apk/debug/*.apk'
